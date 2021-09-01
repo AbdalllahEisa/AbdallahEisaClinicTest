@@ -4,7 +4,12 @@ package com.example.aqarmisr.controller;
 import org.springframework.data.jpa.repository.*;
 
 public interface ClinicSpringData extends JpaRepository<Clinic,Long> {
-
-    List<Clinic> findPatientByName(String name);
+/*this is  a sample of a method that can be created customized method
+there are other spring data builtin methods like
+findAll()
+findById()
+AND many other builtin methods
+*/
+   public List<Clinic> findPatientByName(String name);
 
 }
