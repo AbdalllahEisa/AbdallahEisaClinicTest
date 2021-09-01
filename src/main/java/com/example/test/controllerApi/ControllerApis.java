@@ -50,7 +50,10 @@ LocalDate DateOfReservation=clinic.getReserveDate();
     }
     @PostMapping("addappointment")
     public void AddAppointment(@ModelAttribute("clinic") Clinic clinic){
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String CurrentdateFormatting=formatter.format(LocalDate.now());
+        LocalDate CurrentDate = LocalDate.parse(CurrentdateFormatting,formatter);
+clinic.setReserveDate(CurrentDate);
     clinicDao.AddAppointment(clinic);
 }
 
