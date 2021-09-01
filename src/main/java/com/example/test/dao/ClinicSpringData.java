@@ -9,6 +9,7 @@ there are other spring data builtin methods like
 findAll()
 findById()
 AND many other builtin methods
+can be used at service class or controller class by autowiring or inject this interface in the used class
 */
    public List<Clinic> findPatientByName(String name);
 
