@@ -51,7 +51,7 @@ public class ClinicDaoImplementaion implements ClincDao{
 
     @Override
     @Transactional
-    public List<Clinic> getAllPatientAppointmentsByName(String Name) {
+    public List<Clinic> getPatientAppointmentsByName(String Name) {
         Query result=entityManager.createQuery("from Clinic where  PatientName LIKE '%"+Name+"%'");
         List<Clinic> PatientByName= result.getResultList();
 
@@ -60,7 +60,7 @@ public class ClinicDaoImplementaion implements ClincDao{
 
     @Override
     @Transactional
-    public List<Clinic> AllPatientAppointmentsByDate(LocalDate date) {
+    public List<Clinic> getPatientAppointmentsByDate(LocalDate date) {
         TypedQuery<Clinic> query = entityManager.createQuery(" from Clinic  where date= :date ORDER BY id desc" ,
                 Clinic.class);
         query.setParameter("date", date);
@@ -74,7 +74,7 @@ public class ClinicDaoImplementaion implements ClincDao{
     @Override
     @Transactional
     public void AppointmentCancellation(long id, String ReasonOfCancellation) {
-        Query result=entityManager.createQuery("update Clinic set CancellationReason='"+ReasonOfCancellation+"'  where id="+id);
+        Query result=entityManager.createQuery("update Clinic set PatientCancellation='cancelled',CancellationReason='"+ReasonOfCancellation+"'  where id="+id);
         result.executeUpdate();
     }
 }
